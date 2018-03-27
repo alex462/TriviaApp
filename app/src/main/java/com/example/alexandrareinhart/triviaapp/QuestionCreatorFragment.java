@@ -17,6 +17,7 @@ import butterknife.ButterKnife;
  */
 public class QuestionCreatorFragment extends Fragment {
 
+    private QuestionCreatorFragmentClass questionCreatorFragmentClass;
 
     public QuestionCreatorFragment() {
         // Required empty public constructor
