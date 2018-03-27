@@ -6,9 +6,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,13 +20,31 @@ import butterknife.ButterKnife;
  */
 public class QuestionCreatorFragment extends Fragment {
 
-    private QuestionCreatorFragmentClass questionCreatorFragmentClass;
+
 
     public QuestionCreatorFragment() {
         // Required empty public constructor
     }
 
+    @BindView(R.id.question_editText)
+    protected EditText questionEditText;
 
+    @BindView(R.id.correct_answer_editText)
+    protected EditText correctAnswerEditText;
+
+    @BindView(R.id.incorrect_answerOne_editText)
+    protected EditText incorrectAnswerOneEditText;
+
+    @BindView(R.id.incorrect_answerTwo_editText)
+    protected EditText incorrectAnswerTwoEditText;
+
+    @BindView(R.id.incorrect_answerThree_editText)
+    protected EditText incorrectAnswerThreeEditText;
+
+    @OnClick(R.id.submit_button)
+    protected void onSubmitButtonClicked(View view){
+        //TODO create a method/fragment to store question and answer objects to arraylists
+    }
 
     public static QuestionCreatorFragment newInstance() {
 

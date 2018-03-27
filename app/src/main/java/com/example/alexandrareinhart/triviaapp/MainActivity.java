@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.add_question_button)
     protected void addQuestionClicked(View view){
         questionCreatorFragment = QuestionCreatorFragment.newInstance();
-        questionCreatorFragment.attachView(this);
+//        questionCreatorFragment.attachView(this);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_holder, questionCreatorFragment).commit();
     }
 }
