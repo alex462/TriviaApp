@@ -20,7 +20,7 @@ import butterknife.OnClick;
  */
 public class QuestionCreatorFragment extends Fragment {
 
-
+    private CallbackFragment callbackFragment;
 
     public QuestionCreatorFragment() {
         // Required empty public constructor
@@ -42,7 +42,7 @@ public class QuestionCreatorFragment extends Fragment {
     protected EditText incorrectAnswerThreeEditText;
 
     @OnClick(R.id.submit_button)
-    protected void onSubmitButtonClicked(View view){
+    protected void submitButtonClicked(){
         //TODO create a method/fragment to store question and answer objects to arraylists
     }
 

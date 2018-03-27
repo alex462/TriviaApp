@@ -27,7 +27,6 @@ public class CallbackFragment extends Fragment {
 
 
 
-
     public interface CallbackClass {
         void
     }
