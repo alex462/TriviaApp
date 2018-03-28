@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,10 +25,7 @@ public class QuestionCreatorFragment extends Fragment {
 
 
     private Callback callback;
-//
-//    public QuestionCreatorFragment() {
-//        // Required empty public constructor
-//    }
+
 
     @BindView(R.id.question_editText)
     protected EditText quizQuestionInput;
@@ -81,20 +79,26 @@ public class QuestionCreatorFragment extends Fragment {
     @OnClick(R.id.submit_button)
     protected void submitButtonClicked(){
 
-        //TODO - See if any EditText is empty; do not allow user to save if any of the EditTexts are empty. Use a toast to let user know they must fill all blanks to submit a question.
-        String quizQuestion = quizQuestionInput.getText().toString();
-        String correct = correctAnswer.getText().toString();
-        String firstIncorrect = incorrectAnswerOne.getText().toString();
-        String secondIncorrect = incorrectAnswerTwo.getText().toString();
-        String thirdIncorrect = incorrectAnswerThree.getText().toString();
+        if(quizQuestionInput.getText().toString().isEmpty() || correctAnswer.getText().toString().isEmpty() || incorrectAnswerOne.getText().toString().isEmpty() || incorrectAnswerTwo.getText().toString().isEmpty() || incorrectAnswerThree.getText().toString().isEmpty()){
+            Toast.makeText(getActivity(), "ALL FIELDS ARE REQUIRED", Toast.LENGTH_LONG).show();
+        }
+        else {
+            String quizQuestion = quizQuestionInput.getText().toString();
+            String correct = correctAnswer.getText().toString();
+            String firstIncorrect = incorrectAnswerOne.getText().toString();
+            String secondIncorrect = incorrectAnswerTwo.getText().toString();
+            String thirdIncorrect = incorrectAnswerThree.getText().toString();
 
-        Question question = new Question(quizQuestionInput, correctAnswer, incorrectAnswerOne, incorrectAnswerTwo, incorrectAnswerThree);
+            Question question = new Question(quizQuestion, correct, firstIncorrect, secondIncorrect, thirdIncorrect);
 
-        callback.saveQuestion(question);
+            callback.saveQuestion(question);
+        }
     }
 
     public interface Callback{
         void saveQuestion(Question question);
+
+
     }
 
     public void attachView(Callback callback){

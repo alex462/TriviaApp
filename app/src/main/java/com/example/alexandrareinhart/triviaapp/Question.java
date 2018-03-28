@@ -78,7 +78,7 @@ public class Question implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        
+
     }
 
     //    private CallbackClass callback;

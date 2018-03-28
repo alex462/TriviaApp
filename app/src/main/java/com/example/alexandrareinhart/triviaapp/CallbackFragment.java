@@ -15,22 +15,21 @@ import butterknife.OnClick;
 
 public class CallbackFragment extends Fragment {
 
-    private CallbackClass callback;
+//    private QuestionCreatorFragment.Callback callback;
+//
+//    @Nullable
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+//        View view = inflater.inflate(R.layout.fragment_question_creator, container, false);
+//        ButterKnife.bind(this, view);
+//        return view;
+//    }
+//
+//
+//    @OnClick(R.id.submit_button)
+//    protected void submitQuizQuestionButtonClicked(){
+//        callback.submitButtonClicked();
+//    }
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_question_creator, container, false);
-        ButterKnife.bind(this, view);
-        return view;
-    }
 
-    @OnClick(R.id.submit_button)
-    protected void submitQuizQuestionButtonClicked(){
-        callback.submitButtonClicked();
-    }
-
-    public interface CallbackClass {
-        void submitButtonClicked();
-    }
 }
