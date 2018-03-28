@@ -1,11 +1,13 @@
 package com.example.alexandrareinhart.triviaapp;
 
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -26,24 +28,50 @@ public class QuestionCreatorFragment extends Fragment {
         // Required empty public constructor
     }
 
-    @BindView(R.id.question_editText)
+
     protected EditText questionEditText;
-
-    @BindView(R.id.correct_answer_editText)
     protected EditText correctAnswerEditText;
-
-    @BindView(R.id.incorrect_answerOne_editText)
     protected EditText incorrectAnswerOneEditText;
-
-    @BindView(R.id.incorrect_answerTwo_editText)
     protected EditText incorrectAnswerTwoEditText;
-
-    @BindView(R.id.incorrect_answerThree_editText)
     protected EditText incorrectAnswerThreeEditText;
+    protected Button submitButton;
 
-    @OnClick(R.id.submit_button)
-    protected void submitButtonClicked(){
-        //TODO create a method/fragment to store question and answer objects to arraylists
+    @SuppressLint("ValidFragment")
+    public QuestionCreatorFragment(EditText questionEditText, EditText correctAnswerEditText, EditText incorrectAnswerOneEditText, EditText incorrectAnswerTwoEditText, EditText incorrectAnswerThreeEditText) {
+        this.questionEditText = questionEditText;
+        this.correctAnswerEditText = correctAnswerEditText;
+        this.incorrectAnswerOneEditText = incorrectAnswerOneEditText;
+        this.incorrectAnswerTwoEditText = incorrectAnswerTwoEditText;
+        this.incorrectAnswerThreeEditText = incorrectAnswerThreeEditText;
+    }
+
+    public EditText getQuestionEditText() {
+        questionEditText.toString();
+        return questionEditText;
+    }
+
+    public EditText getCorrectAnswerEditText() {
+        correctAnswerEditText.toString();
+        return correctAnswerEditText;
+    }
+
+    public EditText getIncorrectAnswerOneEditText() {
+        incorrectAnswerOneEditText.toString();
+        return incorrectAnswerOneEditText;
+    }
+
+    public EditText getIncorrectAnswerTwoEditText() {
+        incorrectAnswerTwoEditText.toString();
+        return incorrectAnswerTwoEditText;
+    }
+
+    public EditText getIncorrectAnswerThreeEditText() {
+        incorrectAnswerThreeEditText.toString();
+        return incorrectAnswerThreeEditText;
+    }
+
+    public Button getSubmitButton() {
+        return submitButton;
     }
 
     public static QuestionCreatorFragment newInstance() {

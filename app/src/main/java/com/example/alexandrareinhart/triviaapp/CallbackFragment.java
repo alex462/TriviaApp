@@ -25,9 +25,12 @@ public class CallbackFragment extends Fragment {
         return view;
     }
 
-
+    @OnClick(R.id.submit_button)
+    protected void submitQuizQuestionButtonClicked(){
+        callback.submitButtonClicked();
+    }
 
     public interface CallbackClass {
-        void
+        void submitButtonClicked();
     }
 }
