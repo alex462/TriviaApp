@@ -22,57 +22,52 @@ import butterknife.OnClick;
  */
 public class QuestionCreatorFragment extends Fragment {
 
-    private CallbackFragment callbackFragment;
 
-    public QuestionCreatorFragment() {
-        // Required empty public constructor
-    }
+    private Callback callback;
+//
+//    public QuestionCreatorFragment() {
+//        // Required empty public constructor
+//    }
+
+    @BindView(R.id.question_editText)
+    protected EditText quizQuestionInput;
+    @BindView(R.id.correct_answer_editText)
+    protected EditText correctAnswer;
+    @BindView(R.id.incorrect_answerOne_editText)
+    protected EditText incorrectAnswerOne;
+    @BindView(R.id.incorrect_answerTwo_editText)
+    protected EditText incorrectAnswerTwo;
+    @BindView(R.id.incorrect_answerThree_editText)
+    protected EditText incorrectAnswerThree;
 
 
-    protected EditText questionEditText;
-    protected EditText correctAnswerEditText;
-    protected EditText incorrectAnswerOneEditText;
-    protected EditText incorrectAnswerTwoEditText;
-    protected EditText incorrectAnswerThreeEditText;
-    protected Button submitButton;
-
-    @SuppressLint("ValidFragment")
-    public QuestionCreatorFragment(EditText questionEditText, EditText correctAnswerEditText, EditText incorrectAnswerOneEditText, EditText incorrectAnswerTwoEditText, EditText incorrectAnswerThreeEditText) {
-        this.questionEditText = questionEditText;
-        this.correctAnswerEditText = correctAnswerEditText;
-        this.incorrectAnswerOneEditText = incorrectAnswerOneEditText;
-        this.incorrectAnswerTwoEditText = incorrectAnswerTwoEditText;
-        this.incorrectAnswerThreeEditText = incorrectAnswerThreeEditText;
-    }
 
     public EditText getQuestionEditText() {
-        questionEditText.toString();
-        return questionEditText;
+        quizQuestionInput.toString();
+        return quizQuestionInput;
     }
 
     public EditText getCorrectAnswerEditText() {
-        correctAnswerEditText.toString();
-        return correctAnswerEditText;
+        correctAnswer.toString();
+        return correctAnswer;
     }
 
     public EditText getIncorrectAnswerOneEditText() {
-        incorrectAnswerOneEditText.toString();
-        return incorrectAnswerOneEditText;
+        incorrectAnswerOne.toString();
+        return incorrectAnswerOne;
     }
 
     public EditText getIncorrectAnswerTwoEditText() {
-        incorrectAnswerTwoEditText.toString();
-        return incorrectAnswerTwoEditText;
+        incorrectAnswerTwo.toString();
+        return incorrectAnswerTwo;
     }
 
     public EditText getIncorrectAnswerThreeEditText() {
-        incorrectAnswerThreeEditText.toString();
-        return incorrectAnswerThreeEditText;
+        incorrectAnswerThree.toString();
+        return incorrectAnswerThree;
     }
 
-    public Button getSubmitButton() {
-        return submitButton;
-    }
+
 
     public static QuestionCreatorFragment newInstance() {
 
@@ -83,6 +78,28 @@ public class QuestionCreatorFragment extends Fragment {
         return fragment;
     }
 
+    @OnClick(R.id.submit_button)
+    protected void submitButtonClicked(){
+
+        //TODO - See if any EditText is empty; do not allow user to save if any of the EditTexts are empty. Use a toast to let user know they must fill all blanks to submit a question.
+        String quizQuestion = quizQuestionInput.getText().toString();
+        String correct = correctAnswer.getText().toString();
+        String firstIncorrect = incorrectAnswerOne.getText().toString();
+        String secondIncorrect = incorrectAnswerTwo.getText().toString();
+        String thirdIncorrect = incorrectAnswerThree.getText().toString();
+
+        Question question = new Question(quizQuestionInput, correctAnswer, incorrectAnswerOne, incorrectAnswerTwo, incorrectAnswerThree);
+
+        callback.saveQuestion(question);
+    }
+
+    public interface Callback{
+        void saveQuestion(Question question);
+    }
+
+    public void attachView(Callback callback){
+        this.callback = callback;
+    }
 
 
     @Override
