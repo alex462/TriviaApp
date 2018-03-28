@@ -1,5 +1,6 @@
 package com.example.alexandrareinhart.triviaapp;
 
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -34,12 +35,27 @@ public class MainActivity extends AppCompatActivity implements QuestionCreatorFr
     }
 
     @OnClick(R.id.take_quiz_button)
-    protected void takeQuizClicked(){
+    protected void takeQuizClicked() {
         quizFragment = QuizFragment.newInstance();
         quizFragment.attachView(this);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_holder, quizFragment).commit();
-        Bundle bundle = new Bundle();
-        bundle.putParcelableArrayList();
+
+        if (quizQuestions.isEmpty()) {
+            Toast.makeText(this, "You have not added any questions yet!", Toast.LENGTH_LONG).show();
+        } else {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_holder, quizFragment).commit();
+            Bundle bundle = new Bundle();
+            bundle.putParcelableArrayList(QUESTIONS_LIST, (ArrayList<? extends Parcelable>) quizQuestions);
+            quizFragment.setArguments(bundle);
+        }
+    }
+
+    @OnClick(R.id.delete_quiz_button)
+    protected void deleteQuizClicked() {
+        if (quizQuestions.isEmpty()) {
+            Toast.makeText(this, "There are no questions to delete!", Toast.LENGTH_LONG).show();
+        } else {
+            //TODO alert dialog to make sure user wants to delete quiz and logic to make that happen, Toast when complete.
+        }
     }
 
 
@@ -50,12 +66,9 @@ public class MainActivity extends AppCompatActivity implements QuestionCreatorFr
         getSupportFragmentManager().beginTransaction().remove(questionCreatorFragment).commit();
     }
 
-    @Override
-    public void submitButtonClicked() {
+    public void quizFinished(int scoreCorrect){
 
     }
 
-    public interface Callback{
-        void submitButtonClicked();
-    }
+
 }

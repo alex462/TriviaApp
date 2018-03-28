@@ -21,12 +21,11 @@ import static java.util.Collections.*;
 public class Question implements Parcelable {
 
 
-
-    private EditText quizQuestionInput;
-    private EditText correctAnswer;
-    private EditText incorrectAnswerOne;
-    private EditText incorrectAnswerTwo;
-    private EditText incorrectAnswerThree;
+    protected EditText quizQuestionInput;
+    protected EditText correctAnswer;
+    protected EditText incorrectAnswerOne;
+    protected EditText incorrectAnswerTwo;
+    protected EditText incorrectAnswerThree;
 
     public Question(EditText quizQuestionInput, EditText correctAnswer, EditText incorrectAnswerOne, EditText incorrectAnswerTwo, EditText incorrectAnswerThree) {
         this.quizQuestionInput = quizQuestionInput;
@@ -52,22 +51,27 @@ public class Question implements Parcelable {
     };
 
     public EditText getQuizQuestionInput() {
+        quizQuestionInput.toString();
         return quizQuestionInput;
     }
 
     public EditText getCorrectAnswer() {
+        correctAnswer.toString();
         return correctAnswer;
     }
 
     public EditText getIncorrectAnswerOne() {
+        incorrectAnswerOne.toString();
         return incorrectAnswerOne;
     }
 
     public EditText getIncorrectAnswerTwo() {
+        incorrectAnswerTwo.toString();
         return incorrectAnswerTwo;
     }
 
     public EditText getIncorrectAnswerThree() {
+        incorrectAnswerThree.toString();
         return incorrectAnswerThree;
     }
 
@@ -81,27 +85,7 @@ public class Question implements Parcelable {
 
     }
 
-    //    private CallbackClass callback;
-
-//
-//    Array[] quizQuestion = new Array[5];
-//
-//    public void createQuizQuestion(){
-//
-//    }
-//
-//    public int[] shuffleAnswers(int[] array){
-//        Random rgen = new Random();
-//        for(int i=1; i<array.length; i++) {
-//            int randomPosition = rgen.nextInt(array.length);
-//            int temp = array[i];
-//            array[i] = array[randomPosition];
-//            array[randomPosition] = temp;
-//        }
-//        return array;
-//
-//        }
-    }
+}
 
 
 

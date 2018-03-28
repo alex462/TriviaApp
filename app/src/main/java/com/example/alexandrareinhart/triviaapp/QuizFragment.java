@@ -16,6 +16,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static com.example.alexandrareinhart.triviaapp.MainActivity.QUESTIONS_LIST;
+
 public class QuizFragment extends Fragment{
 
     @BindView(R.id.question_textView)
@@ -34,6 +36,9 @@ public class QuizFragment extends Fragment{
 
     private QuizCallback quizCallback;
     private List<Question> quizQuestions;
+    private Question question;
+    private int questionIndex = 0;
+    private int scoreCorrect = 0;
 
     public void attachView(QuizCallback quizCallback){
         this.quizCallback = quizCallback;
@@ -41,6 +46,7 @@ public class QuizFragment extends Fragment{
 
     public interface QuizCallback{
 
+        void quizFinished(int scoreCorrect);
     }
 
 
@@ -66,22 +72,74 @@ public class QuizFragment extends Fragment{
     public void onStart() {
         super.onStart();
         quizQuestions = new ArrayList<>();
-        quizQuestions =
+        quizQuestions = getArguments().getParcelableArrayList(QUESTIONS_LIST);
+        populateQuizContent();
     }
-
-
 
     private void populateQuizContent(){
-        //TODO make work
+        question = quizQuestions.get(questionIndex);
+
+        quizQuestion.setText(question.getQuizQuestionInput().toString());
+        List<Button> buttonList = new ArrayList<>();
+        buttonList.add(aButton);
+        buttonList.add(bButton);
+        buttonList.add(cButton);
+        buttonList.add(dButton);
+
+        List<String> randomAnswerList = new ArrayList<>();
+        randomAnswerList.add(question.getCorrectAnswer().toString());
+        randomAnswerList.add(question.getIncorrectAnswerOne().toString());
+        randomAnswerList.add(question.getIncorrectAnswerTwo().toString());
+        randomAnswerList.add(question.getIncorrectAnswerThree().toString());
+
+        for(Button button : buttonList){
+            int random = (int) (Math.random() * randomAnswerList.size() - 1);
+            button.setText(randomAnswerList.get(random));
+            randomAnswerList.remove(random);
+        }
+
+    }
+    //TODO set onclick methods to disable all buttons except next once one is clicked.. need to re-enable these buttons once button is clicked.
+    @OnClick(R.id.a_answer_button)
+    protected void aButtonClicked(){
+        checkAnswer(aButton.getText().toString());
     }
 
-    private void checkAnswer(){
-        //TODO make work
+    @OnClick(R.id.b_answer_button)
+    protected void bButtonClicked(){
+        checkAnswer(bButton.getText().toString());
+    }
+
+    @OnClick(R.id.c_answer_button)
+    protected void cButtonClicked(){
+        checkAnswer(cButton.getText().toString());
+    }
+
+    @OnClick(R.id.d_answer_button)
+    protected void dButtonClicked(){
+        checkAnswer(dButton.getText().toString());
+    }
+
+    private void checkAnswer(String answer){
+        if(question.getCorrectAnswer().equals(answer))
+        {
+            quizQuestion.setText("Correct!");
+            scoreCorrect++;
+        }
+        else{
+            quizQuestion.setText(R.string.incorrect_corrected, question.getCorrectAnswer());
+        }
+        questionIndex++;
     }
 
     @OnClick(R.id.next_question_button)
     private void nextButtonClicked(){
-
+        if(questionIndex <= quizQuestions.size()-1){
+            populateQuizContent();
+        }
+        else{
+            quizCallback.quizFinished(scoreCorrect);
+        }
     }
 
 
