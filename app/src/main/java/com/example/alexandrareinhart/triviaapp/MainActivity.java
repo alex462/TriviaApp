@@ -27,9 +27,11 @@ public class MainActivity extends AppCompatActivity implements QuestionCreatorFr
         quizQuestions = new ArrayList<>();
     }
 
+
+
     @OnClick(R.id.add_question_button)
     protected void addQuestionClicked(View view){
-//        view.setVisibility(View.INVISIBLE);
+
         questionCreatorFragment = QuestionCreatorFragment.newInstance();
         questionCreatorFragment.attachView(this);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_holder, questionCreatorFragment).commit();
