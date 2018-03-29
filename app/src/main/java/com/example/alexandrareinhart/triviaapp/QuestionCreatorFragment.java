@@ -38,30 +38,23 @@ public class QuestionCreatorFragment extends Fragment {
     @BindView(R.id.incorrect_answerThree_editText)
     protected EditText incorrectAnswerThree;
 
-
-
-    public EditText getQuestionEditText() {
-        quizQuestionInput.toString();
+    public EditText getQuizQuestionInput() {
         return quizQuestionInput;
     }
 
-    public EditText getCorrectAnswerEditText() {
-        correctAnswer.toString();
+    public EditText getCorrectAnswer() {
         return correctAnswer;
     }
 
-    public EditText getIncorrectAnswerOneEditText() {
-        incorrectAnswerOne.toString();
+    public EditText getIncorrectAnswerOne() {
         return incorrectAnswerOne;
     }
 
-    public EditText getIncorrectAnswerTwoEditText() {
-        incorrectAnswerTwo.toString();
+    public EditText getIncorrectAnswerTwo() {
         return incorrectAnswerTwo;
     }
 
-    public EditText getIncorrectAnswerThreeEditText() {
-        incorrectAnswerThree.toString();
+    public EditText getIncorrectAnswerThree() {
         return incorrectAnswerThree;
     }
 

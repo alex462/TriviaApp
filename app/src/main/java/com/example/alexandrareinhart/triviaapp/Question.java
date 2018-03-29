@@ -2,32 +2,28 @@ package com.example.alexandrareinhart.triviaapp;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
 import android.widget.EditText;
-
-import com.example.alexandrareinhart.triviaapp.CallbackFragment.CallbackClass;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Random;
-
-import static java.util.Collections.*;
+import android.widget.TextView;
 
 public class Question implements Parcelable {
 
 
-    protected EditText quizQuestionInput;
-    protected EditText correctAnswer;
-    protected EditText incorrectAnswerOne;
-    protected EditText incorrectAnswerTwo;
-    protected EditText incorrectAnswerThree;
+    protected String quizQuestionInput;
+    protected String correctAnswer;
+    protected String incorrectAnswerOne;
+    protected String incorrectAnswerTwo;
+    protected String incorrectAnswerThree;
 
-    public Question(EditText quizQuestionInput, EditText correctAnswer, EditText incorrectAnswerOne, EditText incorrectAnswerTwo, EditText incorrectAnswerThree) {
+//    public Question(EditText quizQuestionInput, EditText correctAnswer, EditText incorrectAnswerOne, EditText incorrectAnswerTwo, EditText incorrectAnswerThree) {
+//        this.quizQuestionInput = quizQuestionInput;
+//        this.correctAnswer = correctAnswer;
+//        this.incorrectAnswerOne = incorrectAnswerOne;
+//        this.incorrectAnswerTwo = incorrectAnswerTwo;
+//        this.incorrectAnswerThree = incorrectAnswerThree;
+//    }
+
+
+    public Question(String quizQuestionInput, String correctAnswer, String incorrectAnswerOne, String incorrectAnswerTwo, String incorrectAnswerThree) {
         this.quizQuestionInput = quizQuestionInput;
         this.correctAnswer = correctAnswer;
         this.incorrectAnswerOne = incorrectAnswerOne;
@@ -50,30 +46,31 @@ public class Question implements Parcelable {
         }
     };
 
-    public EditText getQuizQuestionInput() {
-        quizQuestionInput.toString();
+    public String getQuizQuestionInput() {
+//        quizQuestionInput.toString();
         return quizQuestionInput;
     }
 
-    public EditText getCorrectAnswer() {
-        correctAnswer.toString();
+    public String getCorrectAnswer() {
+//        correctAnswer.toString();
         return correctAnswer;
     }
 
-    public EditText getIncorrectAnswerOne() {
-        incorrectAnswerOne.toString();
+    public String getIncorrectAnswerOne() {
+//        incorrectAnswerOne.toString();
         return incorrectAnswerOne;
     }
 
-    public EditText getIncorrectAnswerTwo() {
-        incorrectAnswerTwo.toString();
+    public String getIncorrectAnswerTwo() {
+//        incorrectAnswerTwo.toString();
         return incorrectAnswerTwo;
     }
 
-    public EditText getIncorrectAnswerThree() {
-        incorrectAnswerThree.toString();
+    public String getIncorrectAnswerThree() {
+//        incorrectAnswerThree.toString();
         return incorrectAnswerThree;
     }
+
 
     @Override
     public int describeContents() {
@@ -82,9 +79,7 @@ public class Question implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-
     }
-
 }
 
 

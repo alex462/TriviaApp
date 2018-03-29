@@ -13,8 +13,7 @@
     <string name="C">C.</string>
     <string name="D">D.</string>
     <string name="next_question">NEXT QUESTION</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="incorrect_corrected">Incorrect. The correct answer is $1%s .</string>
+    <string name="incorrect_corrected">Incorrect. The correct answer is $1%s.</string>
+    <string name="correct">Correct!</string>
+    <string name="wrongwrong">NOPE! YOU\'RE DUMB!</string>
 </resources>

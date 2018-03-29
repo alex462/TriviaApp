@@ -74,9 +74,16 @@ public class QuizFragment extends Fragment{
         quizQuestions = new ArrayList<>();
         quizQuestions = getArguments().getParcelableArrayList(QUESTIONS_LIST);
         populateQuizContent();
+
     }
 
     private void populateQuizContent(){
+        aButton.setEnabled(true);
+        bButton.setEnabled(true);
+        cButton.setEnabled(true);
+        dButton.setEnabled(true);
+        nextButton.setEnabled(false);
+
         question = quizQuestions.get(questionIndex);
 
         quizQuestion.setText(question.getQuizQuestionInput().toString());
@@ -99,41 +106,58 @@ public class QuizFragment extends Fragment{
         }
 
     }
-    //TODO set onclick methods to disable all buttons except next once one is clicked.. need to re-enable these buttons once button is clicked.
+
     @OnClick(R.id.a_answer_button)
     protected void aButtonClicked(){
         checkAnswer(aButton.getText().toString());
+        bButton.setEnabled(false);
+        cButton.setEnabled(false);
+        dButton.setEnabled(false);
+        nextButton.setEnabled(true);
     }
 
     @OnClick(R.id.b_answer_button)
     protected void bButtonClicked(){
         checkAnswer(bButton.getText().toString());
+        aButton.setEnabled(false);
+        cButton.setEnabled(false);
+        dButton.setEnabled(false);
+        nextButton.setEnabled(true);
     }
 
     @OnClick(R.id.c_answer_button)
     protected void cButtonClicked(){
         checkAnswer(cButton.getText().toString());
+        aButton.setEnabled(false);
+        bButton.setEnabled(false);
+        dButton.setEnabled(false);
+        nextButton.setEnabled(true);
     }
 
     @OnClick(R.id.d_answer_button)
     protected void dButtonClicked(){
         checkAnswer(dButton.getText().toString());
+        aButton.setEnabled(false);
+        bButton.setEnabled(false);
+        cButton.setEnabled(false);
+        nextButton.setEnabled(true);
     }
 
     private void checkAnswer(String answer){
         if(question.getCorrectAnswer().equals(answer))
         {
-            quizQuestion.setText("Correct!");
+            quizQuestion.setText(R.string.correct);
             scoreCorrect++;
         }
         else{
-            quizQuestion.setText(R.string.incorrect_corrected, question.getCorrectAnswer());
+//            String tempAnswer = question.getCorrectAnswer().toString();
+            quizQuestion.setText(R.string.wrongwrong);
         }
         questionIndex++;
     }
 
     @OnClick(R.id.next_question_button)
-    private void nextButtonClicked(){
+    protected void nextButtonClicked(){
         if(questionIndex <= quizQuestions.size()-1){
             populateQuizContent();
         }
