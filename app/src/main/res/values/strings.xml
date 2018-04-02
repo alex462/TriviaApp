@@ -15,5 +15,7 @@
     <string name="next_question">NEXT QUESTION</string>
     <string name="incorrect_corrected">Incorrect. The correct answer is $1%s.</string>
     <string name="correct">Correct!</string>
-    <string name="wrongwrong">NOPE! YOU\'RE DUMB!</string>
+    <string name="dialog_message">You have reached the end of this quiz. Your final score is $1%d out of $2%d.</string>
+    <string name="dialog_title">CONGRATULATIONS!</string>
+    <!--<string name="wrongwrong">NOPE! YOU\'RE DUMB!</string>-->
 </resources>
