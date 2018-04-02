@@ -86,7 +86,7 @@ public class QuizFragment extends Fragment{
 
         question = quizQuestions.get(questionIndex);
 
-        quizQuestion.setText(question.getQuizQuestionInput().toString());
+        quizQuestion.setText(question.getQuizQuestionInput());
         List<Button> buttonList = new ArrayList<>();
         buttonList.add(aButton);
         buttonList.add(bButton);
@@ -94,10 +94,10 @@ public class QuizFragment extends Fragment{
         buttonList.add(dButton);
 
         List<String> randomAnswerList = new ArrayList<>();
-        randomAnswerList.add(question.getCorrectAnswer().toString());
-        randomAnswerList.add(question.getIncorrectAnswerOne().toString());
-        randomAnswerList.add(question.getIncorrectAnswerTwo().toString());
-        randomAnswerList.add(question.getIncorrectAnswerThree().toString());
+        randomAnswerList.add(question.getCorrectAnswer());
+        randomAnswerList.add(question.getIncorrectAnswerOne());
+        randomAnswerList.add(question.getIncorrectAnswerTwo());
+        randomAnswerList.add(question.getIncorrectAnswerThree());
 
         for(Button button : buttonList){
             int random = (int) (Math.random() * randomAnswerList.size() - 1);

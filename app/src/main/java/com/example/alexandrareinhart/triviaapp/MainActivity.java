@@ -1,6 +1,7 @@
 package com.example.alexandrareinhart.triviaapp;
 
 import android.os.Parcelable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements QuestionCreatorFr
     }
 
     public void quizFinished(int scoreCorrect){
-
+        //TODO this is the method for the alert dialogue that will hold the score #correct/#total, then button option back to Main Activity.
     }
 
 
