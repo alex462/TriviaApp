@@ -46,7 +46,7 @@ public class QuizFragment extends Fragment{
 
     public interface QuizCallback{
 
-        void quizFinished(int scoreCorrect);
+        void quizFinished(int correct, int scoreCorrect);
     }
 
 
@@ -152,6 +152,7 @@ public class QuizFragment extends Fragment{
         else{
 //            String tempAnswer = question.getCorrectAnswer().toString();
             quizQuestion.setText(R.string.wrongwrong);
+            //TODO fix this
         }
         questionIndex++;
     }
@@ -162,7 +163,8 @@ public class QuizFragment extends Fragment{
             populateQuizContent();
         }
         else{
-            quizCallback.quizFinished(scoreCorrect);
+            quizCallback.quizFinished(scoreCorrect, questionIndex);
+
         }
     }
 

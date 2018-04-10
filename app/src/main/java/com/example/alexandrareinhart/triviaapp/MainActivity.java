@@ -1,5 +1,7 @@
 package com.example.alexandrareinhart.triviaapp;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Parcelable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements QuestionCreatorFr
     private QuizFragment quizFragment;
     private List<Question> quizQuestions;
     public static final String QUESTIONS_LIST = "questions_list";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +62,19 @@ public class MainActivity extends AppCompatActivity implements QuestionCreatorFr
         if (quizQuestions.isEmpty()) {
             Toast.makeText(this, "There are no questions to delete!", Toast.LENGTH_LONG).show();
         } else {
-            //TODO alert dialog to make sure user wants to delete quiz and logic to make that happen, Toast when complete.
+            AlertDialog.Builder deleteDialog = new AlertDialog.Builder(this);
+            deleteDialog.setMessage("ATTENTION! This will delete your ENTIRE quiz. Do you still want to delete this quiz?").setPositiveButton(R.string.delete_quiz, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    quizQuestions.clear();
+                    dialog.dismiss();
+                    Toast.makeText(MainActivity.this, "The quiz has been deleted. There are no questions saved.", Toast.LENGTH_LONG).show();
+                }
+            });
+
         }
     }
-
+//2buttons - confirm or dismiss
 
     @Override
     public void saveQuestion(Question question){
@@ -71,8 +83,12 @@ public class MainActivity extends AppCompatActivity implements QuestionCreatorFr
         getSupportFragmentManager().beginTransaction().remove(questionCreatorFragment).commit();
     }
 
-    public void quizFinished(int scoreCorrect){
+    public void quizFinished(int scoreCorrect, int questionIndex){
         //TODO this is the method for the alert dialogue that will hold the score #correct/#total, then button option back to Main Activity.
+        getSupportFragmentManager().beginTransaction().remove(quizFragment).commit();
+        AlertDialog.Builder correctDialog = new AlertDialog.Builder(this);
+        correctDialog.setMessage(getString(R.string.dialog_message, scoreCorrect, questionIndex));
+        correctDialog.show();
     }
 
 
