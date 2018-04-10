@@ -2,6 +2,7 @@ package com.example.alexandrareinhart.triviaapp;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Parcelable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements QuestionCreatorFr
     private QuizFragment quizFragment;
     private List<Question> quizQuestions;
     public static final String QUESTIONS_LIST = "questions_list";
+
 
 
     @Override
@@ -70,8 +72,37 @@ public class MainActivity extends AppCompatActivity implements QuestionCreatorFr
                     dialog.dismiss();
                     Toast.makeText(MainActivity.this, "The quiz has been deleted. There are no questions saved.", Toast.LENGTH_LONG).show();
                 }
-            });
+            })
+                    .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    })
+                    .show();
 
+
+//
+//            AlertDialog.Builder builder;
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Dialog_Alert);
+//            } else {
+//                builder = new AlertDialog.Builder(this);
+//            }
+//            builder.setTitle("Delete entry")
+//                    .setMessage("Are you sure you want to delete this entry?")
+//                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            // continue with delete
+//                        }
+//                    })
+//                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            // do nothing
+//                        }
+////                    })
+//                    .setIcon(android.R.drawable.ic_dialog_alert)
+//                    .show();
         }
     }
 //2buttons - confirm or dismiss
@@ -84,7 +115,6 @@ public class MainActivity extends AppCompatActivity implements QuestionCreatorFr
     }
 
     public void quizFinished(int scoreCorrect, int questionIndex){
-        //TODO this is the method for the alert dialogue that will hold the score #correct/#total, then button option back to Main Activity.
         getSupportFragmentManager().beginTransaction().remove(quizFragment).commit();
         AlertDialog.Builder correctDialog = new AlertDialog.Builder(this);
         correctDialog.setMessage(getString(R.string.dialog_message, scoreCorrect, questionIndex));

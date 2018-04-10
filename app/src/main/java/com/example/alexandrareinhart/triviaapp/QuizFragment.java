@@ -150,8 +150,10 @@ public class QuizFragment extends Fragment{
             scoreCorrect++;
         }
         else{
-//            String tempAnswer = question.getCorrectAnswer().toString();
-            quizQuestion.setText(R.string.wrongwrong);
+            String tempAnswer = question.getCorrectAnswer().toString();
+//            quizQuestion.setText(incorrect_corrected, tempAnswer);
+            
+
             //TODO fix this
         }
         questionIndex++;
