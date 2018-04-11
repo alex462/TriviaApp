@@ -152,7 +152,7 @@ public class QuizFragment extends Fragment{
         else{
             String tempAnswer = question.getCorrectAnswer().toString();
 //            quizQuestion.setText(incorrect_corrected, tempAnswer);
-            
+
 
             //TODO fix this
         }
